@@ -4,27 +4,35 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>주간업무보고 자동 생성 — 업무일지 취합과 지난주 대비 분석</title>
-<meta name="description" content="팀원별 금주·차주 업무일지와 지난주 주간업무보고서를 올리면 업무별로 신규·계속·완료·지연을 구분하고, 비슷한 업무를 통합하고, 일정 변경과 주요 이슈를 모아 팀장 보고용 주간업무보고서 초안을 만듭니다. 파일은 브라우저 안에서만 처리합니다.">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<!-- seo-kit: 검색 · 공유 미리보기(주소를 옮기면 이 묶음의 주소를 내 주소로) -->
 <link rel="canonical" href="https://build-2611-17.jobability.co.kr/">
 <meta name="robots" content="index,follow">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="생성형 AI 업무자동화 전문가과정 · 2차수">
+<meta property="og:site_name" content="HD건설기계">
+<meta property="og:title" content="HD건설기계 · 주간업무보고 자동 생성">
+<meta property="og:description" content="팀원별 금주·차주 업무일지와 지난주 주간업무보고서를 올리면 업무마다 지난주와 비교해 신규·계속·완료·지연을 나누고, 비슷한 업무를 통합하고, 복리후생/총무 · 사회공헌/의전 · 자산 · 비상계획 4개 업무 분야로 자동 분류해 전체 요약 → 분야별 금주 실적·차주 계획 → 종합 관리사항">
 <meta property="og:url" content="https://build-2611-17.jobability.co.kr/">
-<meta property="og:title" content="주간업무보고 자동 생성 — 생성형 AI 업무자동화 전문가과정 2차수">
-<meta property="og:description" content="업무일지와 지난주 보고서를 올리면 신규·계속·완료·지연 구분, 일정 변경, 주요 이슈, 보고서 초안까지 만듭니다.">
-<meta property="og:image" content="https://build-2611-17.jobability.co.kr/og-index.png">
+<meta property="og:image" content="https://build-2611-17.jobability.co.kr/og-image.png">
+<meta property="og:image:secure_url" content="https://build-2611-17.jobability.co.kr/og-image.png">
+<meta property="og:image:type" content="image/png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="주간업무보고 자동 생성">
 <meta property="og:locale" content="ko_KR">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="HD건설기계 · 주간업무보고 자동 생성">
+<meta name="twitter:description" content="팀원별 금주·차주 업무일지와 지난주 주간업무보고서를 올리면 업무마다 지난주와 비교해 신규·계속·완료·지연을 나누고, 비슷한 업무를 통합하고, 복리후생/총무 · 사회공헌/의전 · 자산 · 비상계획 4개 업무 분야로 자동 분류해 전체 요약 → 분야별 금주 실적·차주 계획 → 종합 관리사항">
+<meta name="twitter:image" content="https://build-2611-17.jobability.co.kr/og-image.png">
+<!-- /seo-kit -->
+<meta name="description" content="팀원별 금주·차주 업무일지와 지난주 주간업무보고서를 올리면 업무마다 지난주와 비교해 신규·계속·완료·지연을 나누고, 비슷한 업무를 통합하고, 복리후생/총무 · 사회공헌/의전 · 자산 · 비상계획 4개 업무 분야로 자동 분류해 전체 요약 → 분야별 금주 실적·차주 계획 → 종합 관리사항 순서의 팀장 보고용 주간업무보고서를 만드는 도구입니다.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="css/style.css">
 <link rel="stylesheet" href="css/app.css">
 <!-- auth-kit: 로그인 전에는 도구 화면을 감춘다(js/auth.js 가 판정 뒤 푼다) -->
 <script>document.documentElement.classList.add('auth-lock')</script>
-<link rel="stylesheet" href="css/auth.css?v=2026-11-13.9">
-<link rel="stylesheet" href="css/board.css?v=2026-11-13.9">
-<link rel="stylesheet" href="css/kit-build.css?v=2026-11-13.9">
+<link rel="stylesheet" href="css/auth.css?v=2026-11-13.11">
+<link rel="stylesheet" href="css/board.css?v=2026-11-13.11">
+<link rel="stylesheet" href="css/kit-build.css?v=2026-11-13.11">
 <!-- /auth-kit -->
 </head>
 <body>
@@ -193,11 +201,11 @@
 <script src="js/report.js"></script>
 <script src="js/app.js"></script>
 <!-- auth-kit: 로그인 · 사용 신청 · 승인 · 게시판(키트 정본 data10-00/kit/auth, 적용 build-2611-00/tools/kit) -->
-<script src="vendor/supabase.js?v=2026-11-13.9"></script>
-<script src="js/auth-config.js?v=2026-11-13.9"></script>
-<script src="js/kit-build.js?v=2026-11-13.9"></script>
-<script src="js/board.js?v=2026-11-13.9"></script>
-<script src="js/auth.js?v=2026-11-13.9"></script>
+<script src="vendor/supabase.js?v=2026-11-13.11"></script>
+<script src="js/auth-config.js?v=2026-11-13.11"></script>
+<script src="js/kit-build.js?v=2026-11-13.11"></script>
+<script src="js/board.js?v=2026-11-13.11"></script>
+<script src="js/auth.js?v=2026-11-13.11"></script>
 <!-- /auth-kit -->
 </body>
 </html>
